@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            margin: 0 200px;
+            border: 1px solid #ccc;
+            transform-origin: 0 0;
+            /* transform: rotate(30deg); */
+            transform: translate(100px,30px) rotate(30deg);
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            margin: 100px 200px 0;
+            border: 1px solid #ccc;
+            position: relative;
+        }        
+        .box3{
+            border: 1px solid red;
+            line-height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            margin: 50px 200px 0;
+            border: 1px solid #ccc;
+            transform: skew(20deg,20deg);
+        }
+        .box5{
+            width: 200px;
+            height: 200px;
+            margin: 50px 200px 0;
+            border: 1px solid #ccc;
+            transform: scale(0.5,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">
+        <div class="box3">box3</div>
+    </div>
+    <div class="box4">box4</div>
+    <div class="box5">box5</div>
+</body>
+</html>
+
+<script>
+
+    //1.位移 translate(x轴位移量,y轴位移量)
+
+    //2.旋转 rotate(旋转的角度) 
+
+    //3.transform-origin: 0 0; 旋转中心点（默认位元素中心点）（只对retate有效）
+
+    //4.使用translate()让一个宽高不定的元素在容器中水平垂直居中
+
+    //5.skew(x轴倾斜角度,y轴倾斜角度)
+
+    //6.scale(x轴缩放的倍数,y轴轴缩放的倍数)   注意：元素边框宽度、元素中的字体大小等也会跟着缩放
+
+
+
+</script>
