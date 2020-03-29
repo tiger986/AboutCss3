@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: red;
+        }
+        .box1:hover{
+            transition-property: background-color; /*要切换的元素属性*/
+            transition-duration: 2s; /*切换过程的时间*/
+            /* transition-delay: 500ms; */
+            transition-delay: 1s; /*延迟开始*/
+            transition-timing-function: ease-in; /*指定切换效果的速度*/
+            background-color: green; /*设置切换成的属性值*/
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: red;
+        }
+        .box2:hover{
+            transition-property: all;
+            transition-duration: 2s;
+            /* transition-delay: 500ms; */
+            transition-delay: 1s;
+            /* transition-timing-function: ease-in; */
+            transition-timing-function: cubic-bezier(1, 0, 0, 1); /*贝塞尔曲线*/
+            background-color: green;
+            transform: translate(200px,0);
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            margin: 100px;
+            background-color: red;
+        }
+        .box3:hover{
+            transition: all 3s 1s ease;
+            background-color: green;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+</body>
+</html>

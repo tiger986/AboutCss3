@@ -10,7 +10,10 @@
         *{
             margin: 0;
             padding: 0;
+        }
+        body{
             font-size: 20px;
+            padding-bottom: 100px;
         }
         .box1{
             width: 100px;
@@ -50,6 +53,25 @@
             border: 1px solid #ccc;
             transform: scale(0.5,0.5);
         }
+        .box6{
+            width: 100px;
+            height: 100px;
+            margin: 50px 200px 0;
+            position: relative;
+        }
+        .box6::after{
+            width: 200%;
+            height: 200%;
+            content: '';
+            border: 1px solid red;
+            /* border-bottom: 1px solid red; */
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0;
+            transform: scale(0.5,0.5);
+        }
     </style>
 </head>
 <body>
@@ -59,22 +81,38 @@
     </div>
     <div class="box4">box4</div>
     <div class="box5">box5</div>
+    <div class="box6">box6</div>
 </body>
 </html>
 
 <script>
 
-    //1.位移 translate(x轴位移量,y轴位移量)
+    //1. 位移 translate(x轴位移量,y轴位移量)
 
-    //2.旋转 rotate(旋转的角度) 
+    //2. 旋转 rotate(旋转的角度) 
 
-    //3.transform-origin: 0 0; 旋转中心点（默认位元素中心点）（只对retate有效）
+    //3. transform-origin: 0 0; 旋转、缩放等中心点（默认位元素中心点）
 
-    //4.使用translate()让一个宽高不定的元素在容器中水平垂直居中
+    //4. 使用translate()让一个宽高不定的元素在容器中水平垂直居中
 
-    //5.skew(x轴倾斜角度,y轴倾斜角度)
+    //5. skew(x轴倾斜角度,y轴倾斜角度)(扭曲)
 
-    //6.scale(x轴缩放的倍数,y轴轴缩放的倍数)   注意：元素边框宽度、元素中的字体大小等也会跟着缩放
+    //6. scale(x轴缩放的倍数,y轴轴缩放的倍数)   注意：元素边框宽度、元素中的字体大小等也会跟着缩放（这样我们就可以利用这点给某个带文本东西做缩略图，缩略的容器还有div正常写，只是把文本写在一个块级子元素中，在子元素的样式中用scale缩略）
+
+    //7. 使用scale()解决移动端1像素线的问题
+
+    /*一个屏幕上显示的像素个数越多，显示的图像就越精细，苹果发明了retina屏。我们所写的1px在retina=1的屏幕上显示的就是1个物理像素，而在
+      retina=2的屏幕上显示的则是2个物理像素（故px是相对单位）（屏幕的分辨率就是指屏幕的宽高有多少个物理像素），所以我们有的电脑屏幕是1440x900，
+      而iphon6/7/8的手机屏幕是750x1334，就是因为电脑屏的retina=1，而iphon6/7/8的retina=2*/
+
+    /*在浏览器的检查->console中输入(也可以直接在js中用console.log(window.devicePixelRatio))
+      window.devicePixelRatio打印出来的iphon6/7/8的是2，iphon6/7/8 Plus的是3，电脑屏是1，还有些android机是4，打印出来的这个值就叫dpr，
+      dpr就是物理像素和逻辑像素的比值，dpr=1就表示1个物理像素点显示1个逻辑像素点，dpr=2就表示4个物理像素点显示1个逻辑像素点，以此类推。所以
+      dpr越大的屏幕显示的图像就越精细*/
+
+    /*根据以上的认识，高度是1px的线在dpr越大的屏幕上显示的就越粗（1px的线在开发中又很常用，如分割线、边框等），这样就有一个问题：
+      1px的线在dpr不同的屏幕上显示出来的粗细不一样，最好的解决办法就是将1px边框写在元素的伪类元素上，手动将伪类元素的宽高设成200%（dpr=2），然后再用scale()缩回来。
+      但是，如果手机屏的dpr=3或4怎么办？我们怎么动态的来设置伪类元素的缩放比例呢？*/
 
 
 
