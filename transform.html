@@ -72,6 +72,61 @@
             transform-origin: 0 0;
             transform: scale(0.5,0.5);
         }
+
+        @media screen and (max--moz-device-pixel-ratio: 1.49),
+                          (-webkit-max-device-pixel-ratio: 1.49),
+                          (max-device-pixel-ratio: 1.49),
+                          (max-resolution: 143dpi),
+                          (max-resolution: 1.49dppx){
+                              .box6::after{
+                                  width: 100%;
+                                  height: 100%;
+                                  content: '';
+                                  border: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(1,1);
+                              }
+                          }
+        @media screen and (min--moz-device-pixel-ratio: 1.5) and (max--moz-device-pixel-ratio: 2.49),
+                          (-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 2.49),
+                          (min-device-pixel-ratio: 1.5) and (max-device-pixel-ratio: 2.49),
+                          (min-resolution: 144dpi) and (max-resolution: 239dpi),
+                          (min-resolution: 1.5dppx) and (max-resolution: 2.49dppx){
+                              .box6::after{
+                                  width: 200%;
+                                  height: 200%;
+                                  content: '';
+                                  border: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(0.5,0.5);
+                              }
+                          }
+        @media screen and (min--moz-device-pixel-ratio: 2.5),
+                          (-webkit-min-device-pixel-ratio: 2.5),
+                          (min-device-pixel-ratio: 2.5),
+                          (min-resolution: 240dpi),
+                          (min-resolution: 2.5dppx){
+                              .box6::after{
+                                  width: 300%;
+                                  height: 300%;
+                                  content: '';
+                                  border: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(0.33333,0.33333);
+                              }
+                          }
     </style>
 </head>
 <body>
@@ -112,7 +167,8 @@
 
     /*根据以上的认识，高度是1px的线在dpr越大的屏幕上显示的就越粗（1px的线在开发中又很常用，如分割线、边框等），这样就有一个问题：
       1px的线在dpr不同的屏幕上显示出来的粗细不一样，最好的解决办法就是将1px边框写在元素的伪类元素上，手动将伪类元素的宽高设成200%（dpr=2），然后再用scale()缩回来。
-      但是，如果手机屏的dpr=3或4怎么办？我们怎么动态的来设置伪类元素的缩放比例呢？*/
+      但是，如果手机屏的dpr=1或3怎么办？我们怎么动态的来设置伪类元素的缩放比例呢？ 第一种方法就是用js获取再给伪元素的css赋相应的值，但性能不好，第二种就是用css3的
+      媒体查询的resolution条件来定义不同分辨率屏幕(相应分辨率屏幕的dpr就明确了)下的伪元素的宽高和scale值，方法如上面样式中所写*/
 
 
 
