@@ -1,0 +1,77 @@
+1. 媒体查询
+   媒体查询可以让我们根据设备显示器的特性（如视口宽度、屏幕比例、设备方向）为其设定css样式，使用媒体查询可以在不改变页面内容的情况下，为
+   特定的一些输出设备定制显示效果。
+
+2. 响应式网站设计
+   集中创建页面图片的排版大小，可以智能的根据用户行为及使用的设备环境（系统平台、屏幕尺寸、屏幕定向等）进行相对应的布局。
+
+3. 国内使用响应式的网站不多，但在页面内的某个部分使用media的很多。
+
+4. madia的使用方法
+   @media 设备 and (条件1) and (条件2) {
+       css样式
+   }
+   (1) 设备：screen、print、all等
+   (2) 条件：width、height、orientation(屏幕方向)、resolution(屏幕分辨率)等，可以只有一个条件，也可以有两个条件,还可以更多
+       @media screen and (max-width: 1024px){ （当屏幕宽度小于等于1024px时应用media中定义的css样式）
+           css样式
+       }
+       @media screen and (max-width: 1024px) and (min-width: 320px){ （当屏幕宽度小于等于1024px大于等于320px时应用media中定义的css样式）
+           css样式
+       }
+    (3) 利用resolution来解决1像素线的问题，1像素线的问题在于怎样动态获取设备的dpr用于设置1像素线的scale值，当然可以用js来获取再改变css样式，但性能不如直接用css
+        好，有了resolution这个条件，我们就可以用css来动态查询设备的分辨率，那也就知道了设备的dpr，怎样就通过使用@media的方法来解决1像素线的问题了。
+        @media screen and (max--moz-device-pixel-ratio: 1.49),
+                          (-webkit-max-device-pixel-ratio: 1.49),
+                          (max-device-pixel-ratio: 1.49),
+                          (max-resolution: 143dpi),
+                          (max-resolution: 1.49dppx){
+                              .div::after{
+                                  width: 100%;
+                                  height: 100%;
+                                  content: '';
+                                  border-bottom: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(1,1);
+                              }
+                          }
+        @media screen and (min--moz-device-pixel-ratio: 1.5) and (max--moz-device-pixel-ratio: 2.49),
+                          (-webkit-min-device-pixel-ratio: 1.5) and (-webkit-max-device-pixel-ratio: 2.49),
+                          (min-device-pixel-ratio: 1.5) and (max-device-pixel-ratio: 2.49),
+                          (min-resolution: 144dpi) and (max-resolution: 239dpi),
+                          (min-resolution: 1.5dppx) and (max-resolution: 2.49dppx){
+                              .div::after{
+                                  width: 200%;
+                                  height: 200%;
+                                  content: '';
+                                  border-bottom: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(0.5,0.5);
+                              }
+                          }
+        @media screen and (min--moz-device-pixel-ratio: 2.5),
+                          (-webkit-min-device-pixel-ratio: 2.5),
+                          (min-device-pixel-ratio: 2.5),
+                          (min-resolution: 240dpi),
+                          (min-resolution: 2.5dppx){
+                              .div::after{
+                                  width: 300%;
+                                  height: 300%;
+                                  content: '';
+                                  border-bottom: 1px solid red;
+                                  box-sizing: border-box;
+                                  position: absolute;
+                                  top: 0;
+                                  left: 0;
+                                  transform-origin: 0 0;
+                                  transform: scale(0.33333,0.33333);
+                              }
+                          }

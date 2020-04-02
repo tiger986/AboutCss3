@@ -1,0 +1,23 @@
+1. webStorage是HTML5中本地存储的解决方案之一
+
+2. cookie的缺陷：
+   a. 数据大小限制，4kb左右
+   b. 安全性问题，在http请求中cookie是明文传递的(https不是)
+   c. 网络负担，cookie会被附加到每个http请求中，在httpRequest和httpResponse的header中都是要被传输的，所以无形中增加了一些不必要的流量损失（用CDN服务器可以解决此问题，
+      一个域名不会携带不同域名下的cookie）
+
+3. webStorage的制定并不是为了取代cookie，cookie作为http协议的一部分用来处理客户端和服务器端的通信是不可或缺的，session正是依赖它来实现客户端状态的保持，webStorage的
+   制定是为了解决本来不应该用cookie来做但又不得不用cookie来做的一些本地存储。
+
+4. webStorage有两种类型：
+   a. localStorage 在本地永久储存(除非显示将其删除或清空)
+   b. sessionStorage 储存的数据只在会话期间有效，关闭浏览器则自动删除
+
+5. webStorage的使用(localStorage和sessionStorage相同)：
+   a. 存储：localStorage.setItem(key, val)  val只能是字符串或数字，若要存一个对象则要将其转化为json字符串再存
+   b. 获取：localStorage.getItem(key)  获取回来的值只会是字符串一种可能，若存的是json字符串则要转化成对象后再使用
+   c. 删除：localStorage.removeItem(key)  删除键名为key的储存数据
+   d. 清空：localStorage.clear()  删除本地所有通过localStorage储存的数据
+   e. 获取键名：localStorage.key(index)  获取localStorage中index索引处的键名
+   f. 获取个数：localStorage.length  获取通过localStorage储存的键值对的个数（length是webStorage的唯一属性）
+   

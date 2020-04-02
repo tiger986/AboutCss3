@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    localStorage.setItem('name', 'gao');
+    var data1 = localStorage.getItem('name');
+    console.log(data1);  //'gao'
+
+    localStorage.setItem('age', 20);
+    var data2 = localStorage.getItem('age');
+    console.log(data2);  //'20'(webStorage只返回字符串)
+    
+    var obj = {
+        name: 'chen',
+        age: 20
+    }
+    localStorage.setItem('person', JSON.stringify(obj));  //webStorage只能存字符串和数字
+    var data3 = localStorage.getItem('person');
+    console.log(JSON.parse(data3));  //webStorage只返回字符串
+
+    var key1 = 'name1'
+    var key2 = 0;
+    localStorage.setItem(key1, 'gaohengliang');
+    localStorage.setItem(key2 + 1, 'gaozichen');
+    var data4 = localStorage.getItem(key1);
+    var data5 = localStorage.getItem(key2 + 1);
+    console.log(data4); //'gaohengliang'
+    console.log(data5); //'gaozichen'
+
+    var keyN = localStorage.key(1);
+    console.log(keyN); // person
+
+    var len = localStorage.length;
+    console.log(len); //26
+
+    localStorage.removeItem('name');
+    console.log(localStorage.length); //25
+
+    //localStorage.clear();
+    console.log(localStorage.length); //0
+
+</script>
+</html>
