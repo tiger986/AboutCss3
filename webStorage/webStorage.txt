@@ -20,4 +20,12 @@
    d. 清空：localStorage.clear()  删除本地所有通过localStorage储存的数据
    e. 获取键名：localStorage.key(index)  获取localStorage中index索引处的键名
    f. 获取个数：localStorage.length  获取通过localStorage储存的键值对的个数（length是webStorage的唯一属性）
+
+6. 注意：webStorage的数据与访问的域和浏览器有关，在同一台电脑上不同域名或不同浏览器的网页上打印出来的webStorage的数据是不一样的。
+         webStorage不支持生存期的设置。
+
+7. 为什么说webStorage比cookie好：
+   a. 容量比cookie大，cookie是4KB左右，webStorage是5M
+   b. 安全性比cookie要好，webStorage不作为HTTP的header发送，所以相对安全
+
    

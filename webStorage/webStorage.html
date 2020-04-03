@@ -48,5 +48,22 @@
     //localStorage.clear();
     console.log(localStorage.length); //0
 
+    for(var i = 0; i < localStorage.length; i++){
+        var key = localStorage.key(i);
+        console.log(key +': '+ localStorage.getItem(key));
+    }
+    
+    //监听当此页面所在域的webStorage有变化时触发事件（可以用此监听同域名下不同页面对webStorage的修改），可以拿到关于变化的一些信息并作一些操作
+    //注意：这种变化必须是修改了某个键的值或者是添加了一个新的键值对。
+    var handleStorage = function(e){
+        console.log(e.url); //webStorage是在哪个页面被改变的（完整的页面地址）
+        console.log(e.oldValue); //被改变键的旧值
+        console.log(e.newValue); //被改变键的新值
+        console.log(e.storageArea); //发生改变的storage对象
+        console.log(e.key); //被改变键的键名
+    }
+    window.addEventListener('storage', handleStorage, false);
+    //浏览器打开此页面进行监听，再打开webStorage.1.html对webStorage进行修改，则此页面便会触发handleStorage事件。
+
 </script>
 </html>
